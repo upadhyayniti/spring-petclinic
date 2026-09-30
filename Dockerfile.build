@@ -1,0 +1,16 @@
+FROM maven:latest
+
+# Smoke test to verify if java is available.
+RUN java -version
+
+
+WORKDIR /work
+
+RUN mkdir -p /work/target
+
+# Copy the build configuration and source directories
+COPY pom.xml .
+COPY src/ ./src/
+
+# Compile the application and package the fat JAR (skipping unit tests for speed)
+RUN mvn clean package -DskipTests
