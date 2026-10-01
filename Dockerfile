@@ -11,7 +11,7 @@ RUN mvn clean package -DskipTests
 
 # --- Stage 2: Run the application ---
 #FROM cgr.dev/chainguard/jre:latest
-FROM registry.access.redhat.com/ubi8/openjdk-17
+FROM registry.access.redhat.com/ubi8/openjdk-17-runtime:1.23
 WORKDIR /app
 
 # Copy only the built JAR file from the first stage
